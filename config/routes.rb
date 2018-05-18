@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  get '/books' => 'books#new'
   root 'books#index'
+  get '/books' => 'books#new'
+  resources :users
   resources :books
   
 
