@@ -21,5 +21,26 @@
     </nav>
   </div>
 </header>
-<h1>yユーザー一覧</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>Users</h1>
+<div class="col-xs-9">
+    <h2>Users</h2>
+
+  <table class="table">
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td calss="image"></td>
+          <td class="user-name"><%= user.name %></td>
+          <td><%= link_to"Show", user_path(user.id) %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+</div>
