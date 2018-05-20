@@ -6,7 +6,7 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
           <li class="">
-          	<%= link_to "home",user_path(current_user) %>
+          	<%= link_to "home",user_path(current_user.id) %>
           </li>
           <li class="">
          	<%= link_to "Users",users_path %>
@@ -22,4 +22,27 @@
   </div>
 </header>
 <h1>マイページ</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<table>
+  <thead>
+    <tr>
+        <th>Title</th>
+        <th>Body</th>
+     </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+      <% if book.errors.any? %>
+      <% end %>
+      <tr>
+        <td class="title"><%= book.title %></td>
+        <td class="body"><%= book.body %></td>
+        <td>
+
+          <%= link_to"Show", book_path(book.id) %>
+          <%= link_to"Edit", edit_book_path(book.id) %>
+          <%= link_to"Destroy", book_path(book.id), method: :delete, "data-confirm" =>"Are you sure?" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+</table> 
