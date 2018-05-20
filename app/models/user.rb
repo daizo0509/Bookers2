@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :books
   has_many :post_image
+  attachment :profile_image
 end
