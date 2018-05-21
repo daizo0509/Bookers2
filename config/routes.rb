@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'books#index'
   get '/books' => 'books#new'
+  root 'user#show'
   resources :users
   resources :books
   resources :phot_image
