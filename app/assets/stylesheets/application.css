@@ -52,3 +52,8 @@ div.field{
 div.action{
 	margin-bottom: 10px;
 }
+
+.no_profile-img{
+	width: 40px;
+	height: 40px;
+}

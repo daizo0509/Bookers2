@@ -24,7 +24,7 @@
 <h1>マイページ</h1>
 <div class="side-bar">
   <h2>User info</h2>
-      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+      <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "no_profile-img", fallback: "no_image.jpg" %>
       <% if @user.id == current_user.id %>
       <% end %>
     <table class="table">
@@ -72,7 +72,7 @@
         <td class="body"><%= book.body %></td>
         <td>
 
-          <%= link_to"Show", book_path(book.id) %>
+          
           <%= link_to"Edit", edit_book_path(book.id) %>
           <%= link_to"Destroy", book_path(book.id), method: :delete, "data-confirm" =>"Are you sure?" %>
         </td>

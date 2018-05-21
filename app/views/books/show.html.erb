@@ -1,6 +1,27 @@
-<p><strong>Title:</strong><%= @book.title %></p>
+<table>
+  <thead>
+    <tr>
+        <th>Title</th>
+        <th>Body</th>
+     </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+      	<td class="image"><%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "no_profile-img", fallback: "no_image.jpg" %></td>
+        <td class="title"><%= link_to @books.title, book_path(@books) %></td>
+       
+        <td class="body"><%= @books.body %></td>
+        <td>
+        
+       
+          <%= link_to"Edit", edit_book_path(@books) %>
+          <%= link_to"Destroy", book_path(@books), method: :delete, "data-confirm" =>"Are you sure?" %>
+        </td>
+      </tr>
+      
+    </tbody>
+</table> 
 
-<p><strong>Body:</strong><%= @book.body %></p>
 
-<%= link_to"Edit", edit_book_path(@book) %>
-<%= link_to"Back", new_book_path(@book) %>
+
