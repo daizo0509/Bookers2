@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :new, :edit, :create, :update, :destroy]
-
+  
   def index
   end
 
@@ -11,9 +10,8 @@ class BooksController < ApplicationController
   end
 
   def new
-      @user = current_user
+      @book = Book.new
   		@books = Book.all
-  		@book = Book.new
   end
 
   def edit
