@@ -7,8 +7,10 @@
         <td class="title"><%= link_to @books.title, book_path(@books) %></td>
         <td class="body"><%= @books.body %></td>
         <td>
+        <%if @books.user == current_user %>
         <%= link_to"Edit", edit_book_path(@books) %>
         <%= link_to"Destroy", book_path(@books), method: :delete, "data-confirm" =>"Are you sure?" %>
+        <% end %>
         </td>
       </tr>
       <tr>

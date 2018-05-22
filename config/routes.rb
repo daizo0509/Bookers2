@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  get '/top' => 'books#top'
+  root'books#top'
   get '/books' => 'books#index'
-  root 'user#show'
+  
   resources :users
   resources :books
   resources :phot_image
