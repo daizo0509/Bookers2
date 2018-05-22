@@ -1,9 +1,9 @@
-<%= render 'users/sidebar' %>
+<%= render 'layouts/application' %>
 <h2>Book detail</h2>
 <table>
     <tbody>
       <tr>
-      	<td class="image"><%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "no_profile-img", fallback: "no_image.jpg" %></td>
+      	<td class="image"><%= attachment_image_tag @books.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "no_profile-img", fallback: "no_image.jpg" %></td>
         <td class="title"><%= link_to @books.title, book_path(@books) %></td>
         <td class="body"><%= @books.body %></td>
         <td>
@@ -12,7 +12,7 @@
         </td>
       </tr>
       <tr>
-        <td class="user_name"><%= link_to current_user.name, user_path(current_user.id) %>
+        <td class="user_name"><%= link_to @user.name, user_path(@user) %>
     </tbody>
 </table> 
 

@@ -1,5 +1,28 @@
-<h1>ようこそ Bookersへ！</h1>
-<p><b>Bookers</b>では、様々な書籍に関するあなたの意見や</p>
-<p>印象を共有し交換する事ができます</p>
-<%=link_to "log in", new_user_session_path %> <br>
-<%=link_to "sign up", new_user_registration_path %>
+<%= render 'layouts/application' %>
+<%= render 'users/userinfo' %>
+<%= render 'books/newbook' %>
+<h1>Books</h1>
+<table>
+	<thead>
+	  <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Body</th>
+     </tr>
+    </thead>
+    <tbody>
+      <% @book.each do |book| %>
+      <tr>
+    <td class="image"><%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "no_profile-img", fallback: "no_image.jpg" %></td>    
+		<td class="title"><%= link_to book.title, book_path(book.id) %></td>
+		<td class="body"><%= book.body %></td>
+      <td>
+          <%= link_to"Edit", edit_book_path(book.id) %>
+        <%if book.user == current_user %>
+          <%= link_to"Destroy", book_path(book.id), method: :delete, "data-confirm" =>"Are you sure?" %>
+        <% end %>
+      </td>
+      </tr>
+      <% end %>
+    </tbody>
+</table> 

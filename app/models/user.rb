@@ -10,6 +10,6 @@ class User < ApplicationRecord
   validates :introduction, length: {maximum: 50}
 
   has_many :books
-  has_many :post_image
+  has_many :post_images
   attachment :profile_image
 end

@@ -1,60 +1,7 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <nav class="nav navbar-nav navbar-left">
-      <span>Bookers</span>
-    </nav>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-          <li class="">
-          	<%= link_to "home",user_path(current_user.id) %>
-          </li>
-          <li class="">
-         	<%= link_to "Users",users_path %>
-          </li>
-          <li class="">
-            <%= link_to "books",books_path %>
-          </li>
-          <li class="">
-            <%= link_to "logout",destroy_user_session_path, method: :delete %>
-          </li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<%= render 'layouts/application' %>
 <h1>マイページ</h1>
-<div class="side-bar">
-  <h2>User info</h2>
-      <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "no_profile-img", fallback: "no_image.jpg" %>
-      <% if @user.id == current_user.id %>
-      <% end %>
-    <table class="table">
-      <tbody>
-      <tr>
-        <th>name</th>
-        <th><%=@user.name %></th>
-      </tr>
-      <tr>
-        <th>introduction</th>
-        <th><%=@user.introduction %></th>
-      </tr>
-    </tbody>
-  </table>
-  <div class="row"><%= link_to"Edit", edit_user_path(@user.id) %></div>
-</div>
-<h2>New Books</h2>
-<%= form_for(@book) do |f| %>
-  <div class="field">
-      <label>Title</label><br>
-      <%= f.text_field :title %>
-    </div>
-
-    <div class="field">
-      <label>Body</label><br>
-      <%= f.text_area :body %>
-    </div>
-    <div class="action"><%= f.submit 'Create Book' %></div>
-
-<% end %> 
+<%= render 'users/userinfo' %>
+<%= render 'books/newbook' %>
 <table>
   <thead>
     <tr>
