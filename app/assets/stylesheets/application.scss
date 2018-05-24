@@ -13,49 +13,12 @@
  *= require_tree .
  *= require_self
  */
- @import"bootstrap-sprockets";
- @import"bootstrap"
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
 
-body{
-	background-color: #fff;
-	color:#333;
-	font-family: verdana, arial, helvetica, sans-serif;
-	font-size: 13px;
-	line-height: 18px;
-	margin: 33px;
-}
-table{
-	display: table;
-	border-collapse: separate;
-	border-spacing: 2px;
-	border-color: grey;
+header .navbar-left span {
+    font-size: 20px;
+    padding-top: 10px;
+    color: white;
 }
 
-td{
-	padding-bottom: 7px;
-	padding-left: 5px;
-	padding-right: 5px;
-}
-
-p, td{
-	font-family: verdana, arial, helvetica, sans-serif;
-	font-size: 13px;
-	line-height: 18px;
-	margin: 33px;
-}
-a{
-	color: #333;
-}
-
-div.field{
-	margin-bottom: 10px;
-}
-
-div.action{
-	margin-bottom: 10px;
-}
-
-.no_profile-img{
-	width: 40px;
-	height: 40px;
-}

@@ -1,22 +1,72 @@
-<%= render 'layouts/application' %>
+<div class="page-header"></div>
+
+<div class="body" >
+  <div class="container">
+    <p id="notice"></p>
+    <div class="row">
+      <div class="col-xs-3">
+  <h2>User info</h2>
+        <%= attachment_image_tag @user, :profile_image,:fill, 100, 100, format: 'jpeg', fallback: "no_image_100.jpg" %>
+        
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>name</th>
+            <th><%= @user.name %></th>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th><%=@user.introduction %></th>
+          </tr>
+        </tbody>
+    </table>
+    <div class="row"><%= link_to"", edit_user_path(@user.id), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench"  %></div>
+  <h2>New Books</h2>
+    <%= form_for(Book.new) do |f| %>
+    <div class="field row">
+      <label>Title</label><br>
+      <%= f.text_field :title, class:"col-xs-12" %>
+    </div>
+
+    <div class="field row">
+      <label>Body</label><br>
+      <%= f.text_area :body, class:"col-xs-12" %>
+    </div>
+    <br>
+    <div class="actions row"><%= f.submit 'Create Book', class:" btn btn-primary col-xs-12" %></div>
+
+<% end %>
+</div>
+
+    <div class="col-xs-9">
 <h2>Book detail</h2>
-<table>
+<table class="table">
+    <thead></thead>
     <tbody>
       <tr>
-      	<td class="image"><%= attachment_image_tag @books.user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "no_profile-img", fallback: "no_image.jpg" %></td>
+      	<td class="image"><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image_100.jpg" %>
+         <br>
+         <%= link_to @user.name, user_path(@user) %> 
+        </td>
         <td class="title"><%= link_to @books.title, book_path(@books) %></td>
         <td class="body"><%= @books.body %></td>
         <td>
         <%if @books.user == current_user %>
-        <%= link_to"Edit", edit_book_path(@books) %>
-        <%= link_to"Destroy", book_path(@books), method: :delete, "data-confirm" =>"Are you sure?" %>
+        <%= link_to"Edit", edit_book_path(@books), class:"btn-sm btn-success" %>
+        </td>
+        <td>
+        <%= link_to"Destroy", book_path(@books), method: :delete, "data-confirm" =>"Are you sure?", class:"btn-sm btn-danger" %>
         <% end %>
         </td>
       </tr>
-      <tr>
-        <td class="user_name"><%= link_to @user.name, user_path(@user) %>
+      
     </tbody>
 </table> 
+</div>
+</div>
+</div>
+</div>
+
 
 
 

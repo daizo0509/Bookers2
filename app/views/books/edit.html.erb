@@ -1,18 +1,30 @@
-<%= render 'layouts/application' %>
-<h1>Editing Book</h1>
+<div class="page-header"></div>
+
+<div class="body" >
+  <div class="container">
+    <p id="notice"></p>
+    <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+<h2>Editing Book</h2>
 <%= form_for(@book) do |f| %>
     <div class="field">
     <label for="title">Title</label><br>
     <%= f.text_field :title %>
     </div>
     <div class="field">
-    <label for="body">Body</label><br>
+    <label for="Opinion">Opinion</label><br>
     <%= f.text_area :body %>
     </div>
 
-    <div class="action"><%= f.submit 'Update Book' %></div>
+    <div class="action row"><%= f.submit 'Update Book', class:" btn btn-primary col-xs-12"%></div>
+    <div class="col-md-3"></div>
 
 <% end %>
 
     <%= link_to"Show", book_path(@book.id) %>
     <%= link_to"Back", user_path(current_user.id) %>
+</div>
+</div>
+</div>
+</div>
+
