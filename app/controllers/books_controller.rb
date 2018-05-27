@@ -1,12 +1,12 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!, except: [:top]
+  before_action :authenticate_user!, except: [:top, :new]
   def top
     
   end
 
   def index
       @book = Book.new
-      @book = Book.all
+      @books = Book.all
       @user = current_user
 
   end
@@ -34,14 +34,23 @@ class BooksController < ApplicationController
   def create
   		@book = Book.new(book_params)
       @book.user_id = current_user.id
-  		@book.save
-  		redirect_to book_path(@book.id)
+      if @book.save
+  		redirect_to book_path(@book)
+      else
+        @user = current_user
+        @books = Book.all
+      render 'books/index'
+      end
   end
 
-   def update
+  def update
       book = Book.find(params[:id])
-      book.update(book_params)
-      redirect_to book_path(book.id)
+      if book.update(book_params)
+        redirect_to book_path(book.id)
+      else
+        @book = book
+        render 'books/edit'
+      end
   end
 
   def destroy
@@ -54,5 +63,4 @@ class BooksController < ApplicationController
   	def book_params
   		params.require(:book).permit(:title,:body)
   	end
-end
-
+  end
